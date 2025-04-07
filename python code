@@ -1,0 +1,37 @@
+import math
+n= input("Enter a number")
+temp=[]
+for char in n:
+    if char.isdigit():
+        temp.append(int(char))
+
+#to check number range 0 to 4000
+if(len(temp)==4 and temp[0]>=4):
+    print("Enter a number less than 4000")
+    exit()
+print(temp)
+
+rom=[["M","M"],["C","D"], ["X","L"], ["I","V"]]
+
+#if number is less than 4 digit
+for i in range(len(temp)):
+    g=i
+    if (len(temp)==3):
+        g=i+1
+    elif (len(temp)==2):
+        g=i+2
+    elif (len(temp)==1):
+        g=i+3
+
+    if ((temp[i])<4):
+        for k in range (temp[i]):
+            print(rom[g][0],end="")
+    elif((temp[i])==4):
+        print(rom[g][0] + rom[g][1],end="")
+    elif ((temp[i])<9):
+        print (rom[g][1],end="")
+        for j in range(temp[i]-5):
+            print (rom[g][0],end="")
+    elif((temp[i])==9):
+        print(rom[g][0] + rom[g-1][0],end="")
+    print(end=" ")
